@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html ng-app="alumniApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdDU Alumni Portal | Premium Web</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root { 
+            --addu-blue: #1a3a8a; 
+            --addu-gold: #f2c94c;
+            --soft-bg: #f8faff;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            scroll-behavior: smooth; 
+            background-color: var(--soft-bg);
+            color: #2d3436;
+        }
+
+        /* Subtle Background Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#1a3a8a 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Modern Glass Navbar */
+        .navbar { 
+            background: rgba(26, 58, 138, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--addu-gold);
+            padding: 0.8rem 0;
+        }
+
+        /* Animated Section Headers */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px; left: 0;
+            width: 50px; height: 4px;
+            background: var(--addu-gold);
+            border-radius: 2px;
+        }
+
+        /* Premium Card Styling */
+        .card { 
+            border-radius: 20px; 
+            border: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 10px 30px rgba(26, 58, 138, 0.05); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            background: white;
+        }
+        .card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 20px 40px rgba(26, 58, 138, 0.12);
+        }
+
+        /* Hero Gradient */
+        .hero-section { 
+            background: linear-gradient(135deg, var(--addu-blue) 0%, #0d1b3e 100%);
+            color: white; 
+            padding: 120px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        /* Floating Badge */
+        .badge-verified {
+            background: linear-gradient(45deg, var(--addu-blue), #3498db);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Buttons with Shine Effect */
+        .btn-addu {
+            background: var(--addu-blue);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-addu:hover {
+            background: #0d1b3e;
+            color: var(--addu-gold);
+            box-shadow: 0 5px 15px rgba(26, 58, 138, 0.3);
+        }
+
+        .icon-box {
+            width: 50px; height: 50px;
+            background: rgba(26, 58, 138, 0.1);
+            color: var(--addu-blue);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="AlumniCtrl">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-mortarboard-fill me-2 text-warning"></i>ADDU ALUMNI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#mentorship">Mentorship</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#profile">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-start">
+                    <h1 class="display-2 fw-bold mb-4">The Blue Knight <span class="text-warning">Legacy</span></h1>
+                    <p class="lead mb-5 opacity-75">Connect, mentor, and grow with the global community of Ateneo de Davao University graduates.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#events" class="btn btn-warning btn-lg fw-bold px-4">View All Events</a>
+                        <a href="#profile" class="btn btn-outline-light btn-lg px-4">Update Profile</a>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-5 d-none d-lg-block">
+                    <div class="card bg-transparent border-light p-2">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=600" class="rounded-4 img-fluid shadow-lg">
+                    </div>
+                </div> -->
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="card bg-primary p-5 d-flex align-items-center justify-content-center shadow-lg" 
+                        style="height: 400px; background: linear-gradient(135deg, #1a3a8a 0%, #f2c94c 100%); border: none;">
+                        <i class="bi bi-mortarboard text-white" style="font-size: 8rem;"></i>
+                        <h4 class="text-white fw-bold mt-3">Class of 2026</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Experiences</h2>
+            <div class="row g-4">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000" class="card-img-top" style="height: 400px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-3 badge bg-danger p-2">LIVE IN 3 DAYS</div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h3 class="fw-bold">Annual Alumni Gala 2024</h3>
+                                    <p class="text-muted"><i class="bi bi-geo-alt-fill me-2"></i>Grand Hall, Main Campus</p>
+                                </div>
+                                <div class="text-end">
+                                    <h4 class="text-primary mb-0">OCT</h4>
+                                    <h2 class="fw-bold">12</h2>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="avatar-group">
+                                    <span class="small text-muted">+142 Blue Knights Attending</span>
+                                </div>
+                                <button class="btn btn-addu">Secure a Seat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 h-100 bg-white">
+                        <h5 class="fw-bold mb-4">Event Calendar</h5>
+                        <div class="d-flex mb-4">
+                            <div class="icon-box me-3"><i class="bi bi-camera-video"></i></div>
+                            <div>
+                                <h6 class="mb-0">Webinar: AI in Fintech</h6>
+                                <small class="text-muted">Nov 05 • 2:00 PM</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="icon-box me-3" style="background: rgba(242, 201, 76, 0.1); color: #d4a017;"><i class="bi bi-people"></i></div>
+                            <div>
+                                <h6 class="mb-0">Global Reunion</h6>
+                                <small class="text-muted">Nov 18 • London</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary w-100 mt-auto">Sync to Google Calendar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="mentorship" class="bg-white">
+        <div class="container">
+            <h2 class="section-title"><br>Mentorship Hub</h2>
+            <div class="row g-4">
+                <div class="col-md-4" ng-repeat="mentor in mentors">
+                    <div class="card p-4 text-center">
+                        <div class="position-relative d-inline-block mx-auto mb-3">
+                            <img ng-src="{{mentor.img}}" class="rounded-circle border border-4 border-light shadow-sm" width="120">
+                            <span class="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle" style="width: 20px; height: 20px;"></span>
+                        </div>
+                        <h5 class="fw-bold mb-1">{{mentor.name}}</h5>
+                        <p class="text-muted small mb-3">{{mentor.role}}</p>
+                        <div class="d-flex justify-content-center gap-1 mb-4">
+                            <span class="badge bg-light text-dark border small" ng-repeat="tag in mentor.tags">{{tag}}</span>
+                        </div>
+                        <button class="btn btn-addu w-100">Send Connect Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile" style="background-color: #f0f2f5;">
+        <div class="container">
+            <h2 class="section-title"><br>My Alumni Profile</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0 overflow-hidden">
+                        <div style="height: 200px; background: linear-gradient(rgba(26,58,138,0.8), rgba(26,58,138,0.8)), url('https://images.unsplash.com/photo-1523050853064-909280148753?auto=format&fit=crop&w=1200'); background-size: cover; background-position: center;"></div>
+                        
+                        <div class="card-body p-5 pt-0 text-center position-relative">
+                            <img src="https://i.pravatar.cc/150?u=alex" 
+                                 class="rounded-circle border border-5 border-white shadow" 
+                                 style="width: 160px; height: 160px; margin-top: -80px; object-fit: cover;">
+                            
+                            <h2 class="fw-bold mt-3 mb-1">Alex Rivera</h2>
+                            <p class="text-primary fw-600 mb-2">@arivera_knight</p>
+                            
+                            <div class="d-flex justify-content-center gap-2 mb-4">
+                                <span class="badge badge-verified"><i class="bi bi-patch-check-fill me-1"></i> VERIFIED ALUMNUS</span>
+                                <span class="badge bg-warning text-dark rounded-pill px-3">Class of 2018</span>
+                            </div>
+
+                            <p class="text-muted mx-auto mb-4" style="max-width: 600px;">
+                                Senior Product Designer at TechFlow. Passionate about mentoring the next generation of Ateneo Blue Knights. Always looking for ways to give back to the community.
+                            </p>
+
+                            <div class="row g-3 justify-content-center mb-5">
+                                <div class="col-4 col-md-2">
+                                    <div class="p-3 bg-light rounded-4">
+                                        <h4 class="fw-bold mb-0">1.2k</h4>
+                                        <small class="text-muted">Connections</small>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <div class="p-3 bg-light rounded-4">
+                                        <h4 class="fw-bold mb-0">15</h4>
+                                        <small class="text-muted">Mentees</small>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <div class="p-4 bg-light rounded-4">
+                                        <h4 class="fw-bold mb-0">8</h4>
+                                        <small class="text-muted">Events</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center gap-3">
+                                <button class="btn btn-addu px-5">Edit Profile</button>
+                                <button class="btn btn-outline-secondary px-5 border-2 rounded-3">Account Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5" style="background: #0d1b3e; color: rgba(255,255,255,0.6);">
+        <div class="container text-center">
+            <h4 class="text-white fw-bold mb-4">ADDU ALUMNI</h4>
+            <p>Developing leaders for the service of the community since 1948.</p>
+            <div class="mt-4">
+                <i class="bi bi-facebook mx-2 fs-4"></i>
+                <i class="bi bi-linkedin mx-2 fs-4"></i>
+                <i class="bi bi-twitter-x mx-2 fs-4"></i>
+            </div>
+            <hr class="my-5 border-secondary">
+            <p class="small">© 2026 Ateneo de Davao University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        var app = angular.module('alumniApp', []);
+        app.controller('AlumniCtrl', function($scope) {
+            // Data for the Mentorship section (referring to your images)
+            $scope.mentors = [
+                {
+                    name: "Sarah Jenkins",
+                    role: "Senior Product Manager at Google",
+                    img: "https://i.pravatar.cc/150?u=sarah",
+                    tags: ["UX Research", "Strategy"]
+                },
+                {
+                    name: "Michael Chen",
+                    role: "Director of Engineering at Stripe",
+                    img: "https://i.pravatar.cc/150?u=michael",
+                    tags: ["Scalability", "FinTech"]
+                },
+                {
+                    name: "Emily Zhang",
+                    role: "Marketing Lead at Spotify",
+                    img: "https://i.pravatar.cc/150?u=emily",
+                    tags: ["Branding", "Content"]
+                }
+            ];
+        });
+    </script>
+</body>
+</html>

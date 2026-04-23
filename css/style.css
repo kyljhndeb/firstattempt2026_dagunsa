@@ -1,0 +1,12 @@
+html {
+    scroll-behavior: smooth; /* This is the magic line! */
+}
+
+section {
+    min-height: 80vh; /* Makes each section fill most of the screen */
+    padding-top: 100px; /* Prevents the navbar from covering section titles */
+}
+
+.navbar {
+    background-color: #1a3a8a !important;
+}
