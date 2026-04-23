@@ -76,9 +76,16 @@ Assets: Uses Bootstrap Icons and high-quality image placeholders to represent th
 ## Screenshots
 Below are the actual screenshots of the web application.
 1. Hero Section
+![Hero Section](screenshots/hero.png)
    
 2. Events Board
+![Events Board](screenshots/events.png)
    
 3. Mentorship Hub
+![Mentorship Hub](screenshots/mentorship.png)
     
-4. User Profile 
+4. User Profile
+![User Profile](screenshots/profile.png)
+
+5. Footer
+![Footer](screenshots/footer.png)
