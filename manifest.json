@@ -1,0 +1,30 @@
+{
+  "short_name": "AdDU Alumni",
+  "name": "Ateneo de Davao Alumni Portal",
+ "icons": [
+    {
+      "src": "https://placehold.co/192x192/1a3a8a/white?text=ADDU",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://placehold.co/512x512/1a3a8a/white?text=ADDU",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1a3a8a",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1a3a8a",
+  "shortcuts": [
+    {
+      "name": "View Events",
+      "short_name": "Events",
+      "url": "/index.html#events"
+    }
+  ]
+}
